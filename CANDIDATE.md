@@ -66,5 +66,4 @@ interested in how you choose than in which answer you land on.
 
 ## Submitting
 
-Push to a GitLab repository and grant read access to `suhaim.mohamed-lw`,
-`till.wiese-lw`.
+Push to a GitLab repository and grant read access to `suhaim.mohamed-lw`
