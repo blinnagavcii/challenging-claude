@@ -4,12 +4,12 @@
 
 By **business impact**: how much revenue an issue can cost, multiplied by how many visitors it reaches.
 
+I’m aware that localization issues, such as incorrect language settings, could impact a large number of customers outside the German-speaking market. However, since I only have three issues to fix, I think it makes more sense to focus on a single market for now, where we have the greatest potential to generate revenue.
+
 - **Security exposure with unknown scope** is treated at its worst case: the damage is outside our control and cannot be undone.
 - **Campaign weeks count most**: revenue is concentrated there and prices and stock move fastest.
 - Taking the shop down **for everyone** ranks above breaking individual sessions.
 - **Losing the sale** ranks above making the page worse.
-
-The README's "Known context" is treated as constraints, not tasks. German-only is a stated business decision, so localisation ranks as a readiness cost (#8), not a defect. I would want conversion data by country before ranking it higher. Asia is out of scope, so currency and script concerns are left out.
 
 ## 1. A live API key is shipped to every browser
 
@@ -71,7 +71,7 @@ All copy is inline German, prices are formatted by hand, and `lang="de"` is fixe
 ## 9. Prices show German VAT to every EU customer, in the wrong number format
 
 - **Wrong amount (service-side):** every EU customer sees German 19 % VAT, so French and Dutch customers likely see the wrong final price.
-- **Wrong notation:** `129.00 €` instead of ` 129,00 € `, even for German customers.
+- **Wrong notation:** `129.00 €` instead of `129,00 €`, even for German customers.
 
 **Why here:** the wrong amount affects only non-German customers and can only be fixed by the service. The notation is cosmetic.
 
@@ -97,6 +97,7 @@ I'm leaving the list here so these stay separate issues but each pair can be tac
 ## Seen, deliberately not ranked
 
 - `key={index}` in `ProductGrid`.
+- The page is not responsive in mobile.
 - The grid blanks on every filter change.
 - The basket counter counts lines, not items.
 - Sold-out products can be added to the basket ("nur noch 0 verfügbar").
