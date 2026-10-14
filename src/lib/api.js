@@ -1,7 +1,7 @@
 const BASE = import.meta.env.VITE_CATALOG_API_URL
 const API_KEY = import.meta.env.VITE_CATALOG_API_KEY
 
-export async function fetchCatalog(filters) {
+export async function fetchCatalog(filters, { signal } = {}) {
   const params = new URLSearchParams()
   params.set('category', filters.category)
   params.set('colour', filters.colour)
@@ -11,11 +11,14 @@ export async function fetchCatalog(filters) {
   params.set('room', filters.room)
 
   const res = await fetch(`${BASE}?${params.toString()}`, {
+    signal,
     headers: {
       'X-Api-Key': API_KEY,
       'Content-Type': 'application/json',
     },
   })
+
+  if (!res.ok) throw new Error(`Catalogue request failed: ${res.status}`)
 
   const data = await res.json()
   return data
