@@ -34,7 +34,7 @@ export default function App() {
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
   const [cartOpen, setCartOpen] = useState(false)
   const cart = useCart()
-  const { items, total, loading } = useCatalog(filters)
+  const { items, total, loading, error } = useCatalog(filters)
 
   function updateFilter(key, value) {
     setFilters({ ...filters, [key]: value })
@@ -99,9 +99,9 @@ export default function App() {
         <section className="results">
           <div className="results-head">
             <h2>Leuchten</h2>
-            <p className="results-count">{loading ? 'Lade …' : `${total} Artikel`}</p>
+            <p className="results-count">{error ? '' : loading ? 'Lade …' : `${total} Artikel`}</p>
           </div>
-          <ProductGrid items={items} loading={loading} />
+          <ProductGrid items={items} loading={loading} error={error} />
         </section>
       </main>
 

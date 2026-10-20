@@ -26,6 +26,7 @@ In `CartDrawer.jsx:12-16`, `setInterval` has no cleanup and runs even while the 
 **Why second:** every visitor generates this load from page load onward, and the most active shoppers in campaign weeks generate the most. It can take the catalogue service, and with it the whole shop, down at its most valuable moment.
 
 ## 3. Prices are slow to load and go stale in the basket
+This is more backend that's why I left it out since there is not much we can do. The idea here is that when we fetch data on basket for quantity, we should as the beckend team to also give us prices where we could update the basket as well. Fetching everything from the catalogue when opening the basket is not ideal therefore I will move to fix 4.
 
 - **Uncacheable and oversized:** `no-store` plus `Vary: Cookie` makes Varnish send every listing view to origin (about 1 s). Each response is 202 KB, where the cards use about 7 KB.
 - **Stale basket:** the basket saves `priceGross` in `localStorage` and never refreshes it. After a campaign price change, the basket and the card disagree.
