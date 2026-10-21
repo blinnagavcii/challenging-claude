@@ -6,14 +6,29 @@ import { formatPrice, cartTotal } from '../lib/format.js'
 export default function CartDrawer() {
   const cart = useCartContext()
   const [stock, setStock] = useState({})
+  const hasLines = cart.lines.length > 0
 
   // Keep availability fresh while the drawer is open — stock moves fast during
   // campaign weeks and we do not want customers checking out sold-out lines.
+  // At most one poller runs, and only while the drawer is open with items in it.
   useEffect(() => {
-    setInterval(() => {
-      fetchStock().then((data) => setStock(data.stock))
-    }, 3000)
-  }, [cart.lines, cart.open])
+    if (!cart.open || !hasLines) return
+
+    let cancelled = false
+    const refresh = () =>
+      fetchStock()
+        .then((data) => {
+          if (!cancelled) setStock(data.stock)
+        })
+        .catch(() => {}) // keep the last known stock if a refresh fails
+
+    refresh()
+    const id = setInterval(refresh, 3000)
+    return () => {
+      cancelled = true
+      clearInterval(id)
+    }
+  }, [cart.open, hasLines])
 
   if (!cart.open) return null
 
