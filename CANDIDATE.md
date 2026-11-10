@@ -57,7 +57,3 @@ interested in how you choose than in which answer you land on.
 - Do not fix everything. We are testing triage.
 - The `mock-api/` stub stands in for a service another team owns. Say what you
   would ask them for; do not redesign it.
-
-## Submitting
-
-Push to a GitLab repository and grant read access to `suhaim.mohamed-lw`
