@@ -1,9 +1,3 @@
-# Frontend Lead Developer — Technical Exercise
-
-Thanks for making the time. This should take **90 minutes and no more.** We mean
-that literally — if you are still going at 90 minutes, stop and submit what you
-have. Running over does not score better.
-
 ## Context
 
 You have just joined the Luminara Living storefront team. The category listing
