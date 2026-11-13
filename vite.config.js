@@ -7,6 +7,7 @@ import { catalogService } from './mock-api/lamp-catalog-service.js'
 export default defineConfig({
   plugins: [react(), catalogService()],
   build: {
-    sourcemap: true,
+    // Still generated for error tracking, but no longer referenced from the public bundle.
+    sourcemap: 'hidden',
   },
 })

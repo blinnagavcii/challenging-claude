@@ -1,5 +1,4 @@
 const BASE = import.meta.env.VITE_CATALOG_API_URL
-const API_KEY = import.meta.env.VITE_CATALOG_API_KEY
 
 export async function fetchCatalog(filters) {
   const params = new URLSearchParams()
@@ -10,20 +9,13 @@ export async function fetchCatalog(filters) {
   if (filters.sale) params.set('sale', '1')
   params.set('room', filters.room)
 
-  const res = await fetch(`${BASE}?${params.toString()}`, {
-    headers: {
-      'X-Api-Key': API_KEY,
-      'Content-Type': 'application/json',
-    },
-  })
+  const res = await fetch(`${BASE}?${params.toString()}`)
 
   const data = await res.json()
   return data
 }
 
 export async function fetchStock() {
-  const res = await fetch(`${BASE}/stock`, {
-    headers: { 'X-Api-Key': API_KEY },
-  })
+  const res = await fetch(`${BASE}/stock`)
   return res.json()
 }
